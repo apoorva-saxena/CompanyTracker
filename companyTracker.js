@@ -9,6 +9,9 @@ lineReader.on('line', function(line) {
   processLine(line)
 });
 
-processLine = function(line) {
-  console.log('Process this line:', line);
+function processLine(line) {
+  var whois = require('node-whois');
+  whois.lookup(line, function(err, data) {
+    console.log(line, ':', data)
+  })
 }
